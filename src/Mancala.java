@@ -22,6 +22,8 @@ public class Mancala {
             player[i].mancala = (i - 1) * 7 + 6;
             player[i].playerNumber = i;
         }
+        // Make sure the board is set up properly
+        board.resetStones();
 
         while (pTurn != 0) {
             board.printBoard(player);

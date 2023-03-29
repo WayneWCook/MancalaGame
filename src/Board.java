@@ -5,6 +5,7 @@
  *      Take care of all things concerning Mancala Board
  */
 public class Board {
+    private final int[] stonesReset = {4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0};
     private int[] stones = {4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0};
 
     private void printLine(int number, boolean newLine) {
@@ -55,7 +56,13 @@ public class Board {
         for (int j = 0; j < 6; j++) System.out.printf("%4d ", j);
         System.out.println();
         System.out.println("     " + players[1].name + "'s side");
+    }
 
+    // Be able to reset the stones at the start of a game.
+    void resetStones() {
+        for (int i = 0; i < stones.length ; i++) {
+            stones[i] = stonesReset[i];
+        }
     }
 
     // Do the moves
