@@ -24,7 +24,7 @@ public class Board {
 
     public void printBoard(Player[] players) {
         System.out.println("            Mancala Board!");
-        System.out.println("     " + players[2].name + "'s side");
+        System.out.println("          " + players[2].name + "'s side");
         System.out.print("        ");               // Line 0
         for (int j = 12; j > 6; j--) System.out.printf("%4d ", j);
         System.out.println();
@@ -55,7 +55,7 @@ public class Board {
         System.out.print("        ");               // Line 10
         for (int j = 0; j < 6; j++) System.out.printf("%4d ", j);
         System.out.println();
-        System.out.println("     " + players[1].name + "'s side");
+        System.out.println("           " + players[1].name + "'s side");
     }
 
     // Be able to reset the stones at the start of a game.
@@ -67,9 +67,20 @@ public class Board {
 
     // Do the moves
     int doMoves(int plyr, int choice) {
-        plyr = (plyr == 1?2:1);
         int count = stones[choice];
+        if (count == 0) System.out.println("You must choose a pit with stones");
+        else {
+            stones[choice] = 0;
+            while (count > 0) {
+                choice++;
+                if (choice == (plyr == 1 ? 13 : 6)) choice++;
+                if (choice > 13) choice = 0;
+                stones[choice]++;
+                count--;
+            }
+            if (choice == (plyr == 1 ? 6 : 13)) System.out.println("Mancala! Go again.");
+            else plyr = (plyr == 1 ? 2 : 1);
+        }
         return plyr;
-
     }
 }

@@ -21,6 +21,7 @@ public class Mancala {
             player[i].lastPit = (i - 1) * 7 + 5;
             player[i].mancala = (i - 1) * 7 + 6;
             player[i].playerNumber = i;
+            player[i].oppMancala = (player[i].mancala == 6?13:6);
         }
         // Make sure the board is set up properly
         board.resetStones();

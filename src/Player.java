@@ -8,6 +8,7 @@ public class Player {
     public String name;
     public int playerNumber;
     public int mancala;
+    public int oppMancala;
     public int firstPit;
     public int lastPit;
 }
